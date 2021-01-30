@@ -1,7 +1,3 @@
-/**
- * @description 请求响应状态对象
- * @author chensir
- */
 class BaseModel {
     constructor(data, message){
         if(typeof data === "string"){

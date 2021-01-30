@@ -15,4 +15,14 @@ router.post('/login',
   body("userPwd").notEmpty().isString(),
   userController.login);
 
+router.post('/mail',
+  body("userName").notEmpty().isString(),
+  body("email").notEmpty().isString().isEmail(),
+  userController.sendMainCode);
+
+router.patch('/reset',
+  body("userName").notEmpty().isString(),
+  body("code").notEmpty().isString(),
+  body("userPwd").notEmpty().isString(),
+  userController.resetPassword);
 module.exports = router;
