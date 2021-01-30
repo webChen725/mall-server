@@ -1,0 +1,50 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\一树梨花，静开静落\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  D:\XShell\;D:\python\Scripts\;D:\python\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_144\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Go\bin;D:\AndroidStudio\sdk\platform-tools;D:\AndroidStudio\sdk\emulator;D:\AndroidStudio\sdk\tools;D:\AndroidStudio\sdk\tools\bin;%GOPATH%\;D:\graphviz\Graphviz 2.44.1\bin;%GOBIN%\;D:\Git\cmd;D:\RebbitMQ\erl-23.0\bin;D:\RebbitMQ\rabbitmq_server-3.8.4\sbin;E:\java_maven\apache-maven-3.5.2\bin;C:\Users\一树梨花，静开静落\AppData\Local\Microsoft\WindowsApps;C:\Users\一树梨花，静开静落\AppData\Roaming\npm;D:\VS Co;e\bin;e\bin;C:\Users\一树梨花，静开静落\go\bin;D:\androidstudio\sdk\tools\bin;D:\androidstudio\sdk\platform-tools;D:\androidstudio\sdk\emulator;D:\androidstudio\sdk\tools;G:\Go\bin;D:\GoLand\GoLand 2020.2.1\bin;;D:\VS Code\bin;D:\redis;D:\DevEcoStudio\DevEco Studio\bin;;D:\protoBuf\bin;D:\IDEA\IntelliJ IDEA 2019.3.3\bin;;D:\consul;E:\flutter\SDK\flutter\bin;D:\mongodb\bin;
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  14.4.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.npm.taobao.org/jade/download/jade-1.11.0.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (C:\Users\一树梨花，静开静落\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141375:19)
+      at Object.onceWrapper (events.js:421:28)
+      at ClientRequest.emit (events.js:315:20)
+      at TLSSocket.emitRequestTimeout (_http_client.js:768:9)
+      at Object.onceWrapper (events.js:421:28)
+      at TLSSocket.emit (events.js:327:22)
+      at TLSSocket.Socket._onTimeout (net.js:480:8)
+      at listOnTimeout (internal/timers.js:549:17)
+      at processTimers (internal/timers.js:492:7)
+
+npm manifest: 
+  {
+    "name": "mall-server",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www"
+    },
+    "dependencies": {
+      "cookie-parser": "~1.4.4",
+      "debug": "~2.6.9",
+      "express": "~4.16.1",
+      "http-errors": "~1.6.3",
+      "jade": "~1.11.0",
+      "morgan": "~1.9.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
