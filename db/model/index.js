@@ -27,5 +27,8 @@ Order.belongsTo(Address);
 
 module.exports = {
     User,
-    Cart
+    Cart,
+    Goods,
+    Order,
+    Address
 }

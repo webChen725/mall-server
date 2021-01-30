@@ -11,8 +11,17 @@ const User = seq.define("user", {
         allowNull: true
     },
     myPhoto: {
-        type: Sequelize.STRING(32),
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    auth: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        defaultValue: 0  /* 0为普通用户，1为管理员用户 */
     }
 }, {
     timestamps: true
