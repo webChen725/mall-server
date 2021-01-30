@@ -4,6 +4,20 @@ const { pwdToMd5 } = require("../utils/tools");
 
 class UserService {
     /**
+     * 检查用户名和邮箱是否已经被注册
+     */
+    async alreadyExist(userName, email){
+        const result = await User.findOne({
+            where: {
+                [Op.or]: {
+                    userName,
+                    email
+                }
+            }
+        })
+        return !!result;
+    }
+    /**
      * 注册用户
      * @param {*} body 注册用户所需要的数据对象
      */
@@ -22,18 +36,23 @@ class UserService {
         }
     }
     /**
-     * 检查用户名和邮箱是否已经被注册
+     * 用户登录
      */
-    async alreadyExist(userName, email){
-        const result = await User.findOne({
-            where: {
-                [Op.or]: {
-                    userName,
-                    email
-                }
+    async login(body){
+        body.userPwd = pwdToMd5(body.userPwd);
+        try{
+            const res = await User.findOne({
+                where: body
+            });
+            console.log(res)
+            if(res){
+                return res.dataValues;
+            }else{
+                return "用户名或密码错误."
             }
-        })
-        return !!result;
+        }catch(e){
+            return e.message;
+        }
     }
 }
 
