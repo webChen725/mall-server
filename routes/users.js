@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { body } = require('express-validator');
 const userController = require("../controller/UserController")
+const auth = require("../middleware/auth")
 
 /* GET users listing. */
 router.post('/create', 
@@ -25,4 +26,8 @@ router.patch('/reset',
   body("code").notEmpty().isString(),
   body("userPwd").notEmpty().isString(),
   userController.resetPassword);
+
+router.patch('/update',
+  auth,
+  userController.updateUser);
 module.exports = router;

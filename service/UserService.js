@@ -46,7 +46,6 @@ class UserService {
             const res = await User.findOne({
                 where: body
             });
-            console.log(res)
             if(res){
                 return res.dataValues;
             }else{
@@ -97,6 +96,22 @@ class UserService {
                 }
             })
             redisDel(body.email)
+            return Array.isArray(result) && !!result[0] ? true : "重置密码失败.";
+        }catch(e){
+            return e.message;
+        }
+    }
+
+    /**
+     * 更新用户信息
+     */
+    async updateUser(body, user){
+        try{
+            const result = await User.update(body, {
+                where: {
+                    id: user.id
+                }
+            });
             return Array.isArray(result) && !!result[0] ? true : "重置密码失败.";
         }catch(e){
             return e.message;

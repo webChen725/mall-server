@@ -57,6 +57,15 @@ class UserController {
             return res.json(new SuccessModel("success"));
         }
     }
+
+    async updateUser(req, res){
+        const result = userService.updateUser(req.body, req.user);
+        if(typeof result == "string"){
+            return res.json(new ErrorModel(result));
+        }else{
+            return res.json(new SuccessModel("success"));
+        }
+    }
 }
 
 module.exports = new UserController();
