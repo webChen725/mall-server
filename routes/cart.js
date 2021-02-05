@@ -6,7 +6,7 @@ const auth = require("../middleware/auth")
 
 // 加入购物车
 router.post("/add",
-    body("goodsId").notEmpty().isInt(),
+    body("goodId").notEmpty().isInt(),
     body("productNum").notEmpty().isInt(),
     auth,
     cartController.addCart

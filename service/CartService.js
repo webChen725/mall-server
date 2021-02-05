@@ -2,7 +2,7 @@ const{ Cart, User, Goods } = require("../db/model");
 
 class CartService {
     async addCart(body){
-        const { userId, goodsId } = body;
+        const { userId, goodId } = body;
         try{
             /* 校验用户ID是否存在 */
             const user = await User.findOne({
@@ -13,10 +13,20 @@ class CartService {
             }
             /* 校验产品ID是否存在 */
             const product = await Goods.findOne({
-                where: {id: goodsId}
+                where: {id: goodId}
             });
             if(!product){
                 return "商品ID有误";
+            }
+            /* 查询当前商品是否已经加入该用户购物车，若已经加入，则直接返回用户成功状态 */
+            const exist = await Cart.findOne({
+                where: {
+                    userId: userId,
+                    goodId: goodId
+                }
+            })
+            if(exist){
+                return exist;
             }
             const res = await Cart.create(body);
             return res?.dataValues;
