@@ -24,6 +24,30 @@ class CartService {
             return err.message;
         }
     }
+    
+    /**
+     * 查询用户购物车Service
+     */
+    async getCart(userId, pages){
+        const { offset, limit } = pages;  // 处理分页数据
+        try{
+            const res = await Cart.findAll({
+                where: {
+                    id: userId
+                },
+                include: [{
+                    model: User,
+                    include: ["users"]
+                }],
+                offset,
+                limit
+            });
+            console.log(res)
+            return res;
+        }catch(error){
+            return error.message;
+        }
+    }
 }
 
 module.exports = new CartService();

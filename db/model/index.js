@@ -24,6 +24,10 @@ Order.belongsTo(Goods);
 Address.hasMany(Order);
 Order.belongsTo(Address);
 
+/* 购物车和商品之间一对多 */
+Goods.hasMany(Cart);
+Cart.belongsTo(Goods);
+
 
 module.exports = {
     User,

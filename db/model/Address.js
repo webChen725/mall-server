@@ -2,10 +2,6 @@ const Sequelize = require("sequelize")
 const seq = require("../sequelize")
 
 const Address = seq.define("address", {
-    userId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
     userName: {
         type: Sequelize.STRING(64),
         allowNull: true

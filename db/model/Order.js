@@ -2,19 +2,7 @@ const Sequelize = require("sequelize")
 const seq = require("../sequelize")
 
 const Order = seq.define("order", {
-    userId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    productId: {
-        type: Sequelize.INTEGER,
-        allowNull: true
-    },
     productNum: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-    },
-    addrId: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },

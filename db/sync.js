@@ -8,7 +8,7 @@ seq.authenticate().then(() => {
 })
 
 // 执行同步
-seq.sync({force: false}).then(() => {
+seq.sync({force: true}).then(() => {
     console.log('sync ok')
     process.exit()  
 })
