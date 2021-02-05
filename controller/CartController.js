@@ -22,8 +22,7 @@ class CartController{
      */
     async getCart(req, res){
         const userId = req.user?.id;
-        const pages = pageQuery(req.query);
-        const result = await cartService.getCart(userId, pages);
+        const result = await cartService.getCart(userId);
         if(typeof result === "string"){
             return res.json(new ErrorModel(result));
         }

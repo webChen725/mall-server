@@ -2,7 +2,7 @@ const{ Cart, User, Goods } = require("../db/model");
 
 class CartService {
     async addCart(body){
-        const { userId, productId } = body;
+        const { userId, goodsId } = body;
         try{
             /* 校验用户ID是否存在 */
             const user = await User.findOne({
@@ -13,7 +13,7 @@ class CartService {
             }
             /* 校验产品ID是否存在 */
             const product = await Goods.findOne({
-                where: {id: productId}
+                where: {id: goodsId}
             });
             if(!product){
                 return "商品ID有误";
@@ -28,22 +28,22 @@ class CartService {
     /**
      * 查询用户购物车Service
      */
-    async getCart(userId, pages){
-        const { offset, limit } = pages;  // 处理分页数据
+    async getCart(userId){
         try{
-            const res = await Cart.findAll({
-                where: {
-                    id: userId
-                },
+            let result = await User.findOne({
+                where: {id: userId},
+                attributes: [],
                 include: [{
-                    model: User,
-                    include: ["users"]
-                }],
-                offset,
-                limit
-            });
-            console.log(res)
-            return res;
+                    model: Cart,
+                    where: {
+                        'userId': userId 
+                    },
+                    include: [{
+                        model: Goods
+                    }]
+                }]
+            })
+            return result;
         }catch(error){
             return error.message;
         }
