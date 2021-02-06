@@ -10,6 +10,16 @@ class GoodsService {
         }
     }
     
+    async deleteGoods(id){
+        try{
+            const res = await Goods.destroy({
+                where: {id}
+            })
+            return res;
+        }catch(err){
+            return err.message;
+        }
+    }
 }
 
 module.exports = new GoodsService();

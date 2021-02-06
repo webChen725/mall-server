@@ -19,5 +19,11 @@ router.post("/create",
     goodsController.createGoods
 )
 
+// 删除商品
+router.delete("/:id",
+    auth,
+    adminAuth,
+    goodsController.deleteGoods
+)
 
 module.exports = router;
