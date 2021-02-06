@@ -19,4 +19,10 @@ router.patch("/:id",
     addressController.updateAddr
 )
 
+// 删除收货地址
+router.delete("/:id",
+    auth,
+    addressController.deleteAddr
+)
+
 module.exports = router;

@@ -38,6 +38,17 @@ class AddressService {
             return err.message;
         }
     }
+
+    async deleteAddr(id){
+        try{
+            const result = await Address.destroy({
+                where: {id}
+            })
+            return result;
+        }catch(err){
+            return err.message;
+        }
+    }
 }
 
 module.exports = new AddressService();

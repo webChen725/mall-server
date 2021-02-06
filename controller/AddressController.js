@@ -28,6 +28,19 @@ class CartController{
         }
         return res.json(new SuccessModel("success"))
     }
+
+    async deleteAddr(req, res){
+        let { id } = req.params;
+        id = parseInt(id);req.user
+        if(Number.isNaN(id)){
+            return res.status(403).json(new ErrorModel("the params parameter is incorrect"))
+        }
+        const result = await addressService.deleteAddr(id);
+        if(typeof result === "string"){
+            return res.json(new ErrorModel(result));
+        }
+        return res.json(new SuccessModel("success"))
+    }
 }
 
 module.exports = new CartController();
