@@ -13,5 +13,10 @@ router.post("/create",
     orderController.createOrder
 )
 
+router.put("/pay/:id", 
+    auth,
+    orderController.orderPay
+)
+
 
 module.exports = router;

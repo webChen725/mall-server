@@ -32,6 +32,26 @@ class OrderService {
         }
     }
     
+    async orderPay(id, userId){
+        try{
+            /* 校验订单是否属于该用户 */
+            const belongOrder = await Order.findOne({
+                where: {id, userId}
+            })
+            if(!belongOrder){
+                return "No permission to act on this order";
+            }
+            if(belongOrder.dataValues.isPay !== 0){
+                return "The order has been paid, please do not repeat the operation"
+            }
+            const result = await Order.update({isPay: 1}, {
+                where: {id}
+            })
+            return result;
+        }catch(err){
+            return err.message;
+        }
+    }
 }
 
 module.exports = new OrderService();
