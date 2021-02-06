@@ -26,4 +26,16 @@ router.delete("/:id",
     goodsController.deleteGoods
 )
 
+
+// 更新商品信息
+router.patch("/:id",
+    auth,
+    adminAuth,
+    goodsController.updateGoods
+)
+
+// 获取商品信
+router.get("/",
+    goodsController.getGoods
+)
 module.exports = router;

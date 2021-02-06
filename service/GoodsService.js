@@ -20,6 +20,33 @@ class GoodsService {
             return err.message;
         }
     }
+
+    async updateGoods(id, body){
+        try{
+            const res = await Goods.update(body, {
+                where: {id}
+            })
+            return res;
+        }catch(err){
+            return err.message;
+        }
+    }
+
+    async getGoods(pages){
+        const {offset, limit} = pages;
+        try{
+            const result = await Goods.findAndCountAll({
+                offset,
+                limit,
+                order: [
+                    ["createdAt", "desc"]
+                ]
+            })
+            return result;
+        }catch(err){
+            return err.message;
+        }
+    }
 }
 
 module.exports = new GoodsService();
