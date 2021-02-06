@@ -49,6 +49,24 @@ class AddressService {
             return err.message;
         }
     }
+
+    async getAddr(userId){
+        try{
+            const result = await User.findOne({
+                where: {id: userId},
+                attributes: [],
+                include: [{
+                    model: Address,
+                    where: {
+                        userId
+                    }
+                }]
+            })
+            return result;
+        }catch(err){
+            return err.message;
+        }
+    }
 }
 
 module.exports = new AddressService();

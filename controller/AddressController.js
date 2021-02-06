@@ -41,6 +41,15 @@ class CartController{
         }
         return res.json(new SuccessModel("success"))
     }
+
+    async getAddr(req, res){
+        const userId = req.user.id;
+        const result = await addressService.getAddr(userId)
+        if(typeof result === "string"){
+            return res.json(new ErrorModel(result));
+        }
+        return res.json(new SuccessModel(result, "success"))
+    }
 }
 
 module.exports = new CartController();

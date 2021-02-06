@@ -25,4 +25,10 @@ router.delete("/:id",
     addressController.deleteAddr
 )
 
+// 查询用户地址
+router.get("/",
+    auth,
+    addressController.getAddr
+)
+
 module.exports = router;
