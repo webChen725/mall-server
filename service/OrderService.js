@@ -52,6 +52,29 @@ class OrderService {
             return err.message;
         }
     }
+
+    async getAllOrder(userId){
+        try{
+            const result = await User.findOne({
+                where: {id: userId},
+                attributes: [],
+                include: [{
+                    model: Order,
+                    where: {
+                        'userId': userId
+                    },
+                    include: [{
+                        model: Goods
+                    },{
+                        model: Address
+                    }]
+                }]
+            })
+            return result;
+        }catch(err){
+            return err.message;
+        }
+    }
 }
 
 module.exports = new OrderService();

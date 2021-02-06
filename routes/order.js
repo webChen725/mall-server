@@ -19,4 +19,10 @@ router.put("/pay/:id",
 )
 
 
+// 查询用户订单接口
+router.get("/all", 
+    auth,
+    orderController.getAll
+)
+
 module.exports = router;
