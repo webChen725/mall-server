@@ -1,7 +1,8 @@
 const { validationResult } = require('express-validator');
 const { SuccessModel, ErrorModel } = require("../utils/resModel");
 const goodsService = require("../service/GoodsService");
-const { pageQuery } = require("../utils/tools")
+const { pageQuery } = require("../utils/tools");
+const e = require('express');
 
 class GoodsController{
     async createGoods(req, res){
@@ -49,6 +50,17 @@ class GoodsController{
             return res.json(new ErrorModel(result))
         }
         return res.json(new SuccessModel(result, "success"));
+    }
+
+    async searchGoods(req, res){
+        let { keyword } = req.query;
+        keyword = keyword ? keyword : "";
+        const pages = pageQuery(req.query);
+        const result = await goodsService.searchGoods(keyword, pages);
+        if(typeof result === "string"){
+            return res.json(new ErrorModel(result));
+        }
+        return res.json(new SuccessModel(result, "success"))
     }
 }
 

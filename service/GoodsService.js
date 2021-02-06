@@ -1,4 +1,6 @@
 const{ Goods } = require("../db/model");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 class GoodsService {
     async createGoods(body){
@@ -38,6 +40,27 @@ class GoodsService {
             const result = await Goods.findAndCountAll({
                 offset,
                 limit,
+                order: [
+                    ["createdAt", "desc"]
+                ]
+            })
+            return result;
+        }catch(err){
+            return err.message;
+        }
+    }
+
+    async searchGoods(keyword, pages){
+        const { offset, limit } = pages;
+        try{
+            const result = await Goods.findAndCountAll({
+                where: {
+                    productName: {
+                        [Op.like]: "%" + keyword + "%"
+                    }
+                },
+                limit,
+                offset,
                 order: [
                     ["createdAt", "desc"]
                 ]

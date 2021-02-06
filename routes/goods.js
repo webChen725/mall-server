@@ -38,4 +38,9 @@ router.patch("/:id",
 router.get("/",
     goodsController.getGoods
 )
+
+// 商品搜索
+router.get("/search", 
+    goodsController.searchGoods
+)
 module.exports = router;
