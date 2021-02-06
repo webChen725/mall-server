@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 const { SuccessModel, ErrorModel } = require("../utils/resModel");
 const goodsService = require("../service/GoodsService");
-const { pageQuery } = require("../utils/tools")
 
 class GoodsController{
     async createGoods(req, res){
