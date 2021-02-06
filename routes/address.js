@@ -13,5 +13,10 @@ router.post("/add",
     addressController.create
 )
 
+// 收货地址更新
+router.patch("/:id",
+    auth,
+    addressController.updateAddr
+)
 
 module.exports = router;
